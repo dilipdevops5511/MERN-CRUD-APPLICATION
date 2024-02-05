@@ -1,0 +1,45 @@
+UNIGX CONFIG FILE
+------------------
+
+sudo yum install nodejs
+node --version
+
+STEP 2: Install NGINX server
+
+sudo yum install nginx
+check server ip - Your public IP
+
+Enable Nginx to automatically starts if the server restarts.
+
+sudo systemctl enable nginx
+
+Check the status Nginx 
+
+systemctl status nginx
+
+STEP 3: Get your project into your server
+
+Go to your public html folder 
+cd /var/www/html
+or
+cd /usr/share/nginx/html
+
+clone react project from github repository
+
+git clone your_repository
+
+Step 4: Build your project
+
+npm install
+npm run build
+
+
+STEP 6: Configure NGINX to serve static files
+
+sudo nano /etc/nginx/nginx.conf
+
+Add these lines 
+root /var/www/html/reactApp/build;
+
+Restart nginx
+sudo service nginx restart
