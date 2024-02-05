@@ -29,7 +29,7 @@ clone react project from github repository
 
 git clone your_repository
 
-cd Project/
+cd Project/  ---> cd frontend
 
 Step 4: Build your project
 
@@ -39,10 +39,23 @@ npm run build
 
 STEP 6: Configure NGINX to serve static files
 
-sudo nano /etc/nginx/nginx.conf
+sudo vi /etc/nginx/nginx.conf
+
+server {
+    listen 80;
+    server_name 51.20.70.30;
+
+    root /usr/share/nginx/html/Book-Store-MERN-Stack/frontend/dist;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}
+
 
 Add these lines 
-root /var/www/html/reactApp/build;
+root /var/www/html/Mern/frontend/dist;
 
 Restart nginx
 sudo service nginx restart
